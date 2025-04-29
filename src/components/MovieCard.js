@@ -7,7 +7,7 @@ function MovieCard({ movie }) {
 	return (
 		<Col lg={3} md={6} sm={12} className="mb-4">
 			<Card
-				style={{ width: "18rem", margin: "10px", cursor: "pointer" }}
+				style={{ width: "17rem", margin: "10px", cursor: "pointer" }}
 				onClick={() => navigate(`/movie/${movie.id}`)}
 			>
 				<Card.Img variant="top" src={movie.posterURL} />
