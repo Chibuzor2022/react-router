@@ -36,9 +36,8 @@ function AddMovie({ onAddMovie }) {
 	};
 
 	return (
-    <>
-      
-      {/* button to add a new movie */}
+		<>
+			{/* button to add a new movie */}
 			<Button variant="success" onClick={() => setShow(true)} className="mb-5">
 				Add A New Movie
 			</Button>
@@ -94,6 +93,21 @@ function AddMovie({ onAddMovie }) {
 								onChange={handleInputChange}
 								required
 							/>
+						</Form.Group>
+
+						<Form.Group className="mb-3">
+							<Form.Label>Trailer Embed URL</Form.Label>
+							<Form.Control
+								type="url"
+								name="trailerLink"
+								placeholder="https://www.youtube.com/embed/..."
+								value={newMovie.trailerLink}
+								onChange={handleInputChange}
+								required
+							/>
+							<Form.Text className="text-muted">
+								Use the embed URL from YouTube
+							</Form.Text>
 						</Form.Group>
 
 						<Button variant="success" type="submit">

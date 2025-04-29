@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import MovieList from "./components/MovieList";
 import Filter from "./components/Filter";
 import AddMovie from "./components/AddMovie";
+import MovieDetails from "./components/MovieDetails";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // Initial set of movies
@@ -15,6 +17,7 @@ const initialMovies = [
 		posterURL:
 			"https://img.freepik.com/free-psd/movie-text-style-effect_136295-361.jpg?ga=GA1.1.360799756.1744154985&semt=ais_hybrid&w=740",
 		rating: 8,
+		trailerLink: "https://www.youtube.com/embed/qi2XeXQWRx4",
 	},
 	{
 		id: 2,
@@ -24,6 +27,7 @@ const initialMovies = [
 		posterURL:
 			"https://img.freepik.com/free-psd/video-game-adventure-movie-title-3d-text-effect_1389-1648.jpg?ga=GA1.1.360799756.1744154985&semt=ais_hybrid&w=740",
 		rating: 7,
+		trailerLink: "https://www.youtube.com/embed/8EozFl-en5s",
 	},
 	{
 		id: 3,
@@ -33,15 +37,17 @@ const initialMovies = [
 		posterURL:
 			"https://img.freepik.com/free-psd/shattered-wall-texture-editable-text-effect_47987-21263.jpg?ga=GA1.1.360799756.1744154985&semt=ais_hybrid&w=740",
 		rating: 9,
+		trailerLink: "https://www.youtube.com/embed/_qmpZATU65k",
 	},
 	{
 		id: 4,
 		title: "The End",
 		description:
-			"The story of a man who endured till the end to see his come true in spite of numerous challenges",
+			"The story of a man who endured till the end to see his dream come true.",
 		posterURL:
 			"https://img.freepik.com/free-vector/flat-design-end-screen-background_23-2150998486.jpg?ga=GA1.1.360799756.1744154985&semt=ais_hybrid&w=740",
 		rating: 9,
+		trailerLink: "https://www.youtube.com/embed/uX190kmcBG4",
 	},
 ];
 
@@ -70,17 +76,23 @@ function App() {
 	});
 
 	return (
-		<Container className="mt-5">
-			<h1 className="text-center mb-5">The Movie App</h1>
+		<Container className="mt-4">
+			<h1 className="text-center mb-4">My Movie App</h1>
 
-			{/* Filter component */}
-			<Filter onFilterChange={handleFilterChange} />
-
-			{/* Add Movie component */}
-			<AddMovie onAddMovie={addMovie} />
-
-			{/* Movie List component */}
-			<MovieList movies={filteredMovies} />
+			<Routes>
+				<Route
+					path="/"
+					element={
+						<>
+							{/* <Filter filter={filter} setFilter={setFilter} /> */}
+							<Filter onFilterChange={handleFilterChange} />
+							<AddMovie addMovie={addMovie} />
+							<MovieList movies={filteredMovies} />
+						</>
+					}
+				/>
+				<Route path="/movie/:id" element={<MovieDetails movies={movies} />} />
+			</Routes>
 		</Container>
 	);
 }

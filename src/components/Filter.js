@@ -39,7 +39,6 @@ function Filter({ onFilterChange }) {
 						<Form.Label>Filter by Minimum Rating</Form.Label>
 						<Form.Control
 							type="text"
-							placeholder="Enter movie title"
 							value={rating}
 							onChange={handleRatingChange}
 						/>
